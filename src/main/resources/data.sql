@@ -1,0 +1,1 @@
+INSERT INTO `ledger` (`trade_id`,`product`,`transaction_type`,`created_at`,`size`,`size_unit_type`,`price`,`fee`,`total`,`total_unit`,`actual_total`) VALUES( 3452345,	1, 1, '2019-05-12T05:12:37.340', 0.48, 1, 195.28,	0.234336, -93.968736,	1,	-93.968736);
