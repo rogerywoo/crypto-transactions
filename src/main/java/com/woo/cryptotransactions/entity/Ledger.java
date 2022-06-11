@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.Set;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
@@ -16,6 +17,9 @@ public class Ledger {
 
 //    @Column(columnDefinition="timestamp default CURRENT_TIMESTAMP")
     private Instant createdAt;
+
+    @OneToMany(mappedBy="ledger")
+    private Set<TransactionLedger> reconcilations;
 
     public Ledger() {
     }

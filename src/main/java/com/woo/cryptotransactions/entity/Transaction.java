@@ -6,7 +6,9 @@ import com.woo.cryptotransactions.entity.transform.SizeUnitType;
 import com.woo.cryptotransactions.entity.transform.TransactionType;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.util.Date;
+import java.util.Set;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
@@ -19,12 +21,14 @@ public class Transaction {
 
     private ProductType productType;
 
+    @OneToMany(mappedBy="transaction")
+    private Set<TransactionLedger> reconcilations;
 
     @Column(nullable=false)
     private TransactionType transactionType;
 
 //    @Column(columnDefinition="timestamp default CURRENT_TIMESTAMP")
-    private Date createdAt;
+    private Instant createdAt;
 
     private Double size;
 
@@ -75,11 +79,11 @@ public class Transaction {
         this.transactionType = transactionType;
     }
 
-    public Date getCreatedAt() {
+    public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 

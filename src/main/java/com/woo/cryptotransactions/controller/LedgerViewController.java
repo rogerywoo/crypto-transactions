@@ -1,8 +1,7 @@
 package com.woo.cryptotransactions.controller;
 
-import com.woo.cryptotransactions.entity.Ledger;
-import com.woo.cryptotransactions.entity.Transaction;
-import com.woo.cryptotransactions.service.LedgerService;
+import com.woo.cryptotransactions.entity.LedgerView;
+import com.woo.cryptotransactions.service.LedgerViewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,17 +12,17 @@ import java.util.List;
 
 @CrossOrigin(origins="http://localhost:3000")
 @RestController
-public class LedgerController {
+public class LedgerViewController {
     @Autowired
-    private LedgerService service;
+    private LedgerViewService service;
 
-    @GetMapping("/ledger")
-    public List<Ledger> getAll(){
+    @GetMapping("/ledger-view")
+    public List<LedgerView> getAll(){
         return service.getAll();
     }
 
-    @GetMapping("/ledger/{id}")
-    public Ledger getById(@PathVariable Long id){
+    @GetMapping("/ledger-view/{id}")
+    public LedgerView getById(@PathVariable Long id){
         return service.getById(id);
     }
 }
